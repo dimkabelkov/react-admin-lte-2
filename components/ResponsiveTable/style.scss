@@ -1,0 +1,15 @@
+.responsive-table {
+  &__controll {
+    &--tree {
+      padding: 9px 9px !important;
+      position: relative;
+      top: 10px;
+      cursor: pointer;
+    }
+    &--empty {
+      position: relative;
+      padding-left: 18px;
+      top: 10px;
+    }
+  }
+}

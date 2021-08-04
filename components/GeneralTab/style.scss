@@ -1,0 +1,13 @@
+.nav-tabs-custom {
+  box-shadow: none;
+  margin: -10px;
+  border-radius: 0;
+
+  li.danger:not(:hover) {
+    background-color: rgba(244, 67, 54, 0.2);
+  }
+}
+
+.tab_pane:not(.active) {
+  display: none;
+}

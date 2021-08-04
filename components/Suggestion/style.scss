@@ -1,0 +1,57 @@
+.MuiList-root{
+  &.options {
+    position: absolute;
+    z-index: 10;
+    background: white;
+    left: 0;
+    top: 45px;
+    width: 100%;
+    max-height: 250px;
+    overflow-y: auto;
+  }
+  &.options {
+    position: absolute;
+    z-index: 10;
+    background: white;
+    left: 0;
+    top: 45px;
+    width: 100%;
+    max-height: 250px;
+    overflow-y: auto;
+  }
+}
+.MuiSvgIcon-root {
+  &.dropdown-icon {
+    top:18px;
+    fill: currentColor;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    font-size: 2rem;
+    transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    user-select: none;
+    flex-shrink: 0;
+    right: 0;
+    color: rgba(0, 0, 0, 0.54);
+    position: absolute;
+    pointer-events: none;
+
+    &.active {
+      -moz-transform: rotate(180deg); /* Для Firefox */
+      -ms-transform: rotate(180deg); /* Для IE */
+      -webkit-transform: rotate(180deg); /* Для Safari, Chrome, iOS */
+      -o-transform: rotate(180deg); /* Для Opera */
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.MuiAutocomplete-root {
+  .MuiTextField-root {
+    .MuiInput-root {
+      .MuiAutocomplete-input:first-child {
+        padding: 6px 0 !important;
+      }
+    }
+  }
+}

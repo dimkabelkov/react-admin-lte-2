@@ -1,0 +1,28 @@
+html, body, #app {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+
+  .MuiFormLabel-root {
+    color: rgba(0, 0, 0, 1);
+  }
+
+  .MuiFormHelperText-root.Mui-error {
+    position: absolute;
+    bottom: -18px;
+  }
+}
+
+#app__layout {
+  width: 100%;
+  height: 100%;
+
+  .btn-icon {
+    padding: 5px;
+  }
+
+  .box-body {
+    margin-bottom: 10px;
+  }
+}

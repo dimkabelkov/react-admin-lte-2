@@ -1,0 +1,18 @@
+.auth-email-page {
+  background-size: cover;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-position: center center;
+  background-repeat: no-repeat;
+  img {
+    padding: 0 25px 25px 25px;
+    margin-top: 25px;
+  }
+  &__paper {
+    padding: 10px;
+    margin: 0 25px 25px 25px;
+  }
+}
