@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
-import * as actionsCore from '../../../external/actions/core';
+import * as actionsCore from 'react-admin-lte-2/actions/core';
 
 class GeneralTabContent extends React.Component {
     constructor(props) {
