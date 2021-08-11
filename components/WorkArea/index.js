@@ -185,7 +185,7 @@ class WorkArea extends React.Component {
                         <ul className='nav navbar-nav'>
                             { !!this.props.auth
                                 ? <li>
-                                    <a title={ this.props.auth.email } className='dropdown-toggle'>{ this.props.auth.name } ({this.renderTtl(this.props.ttl)})</a>
+                                    { this.props.statusBarResolver ? this.props.statusBarResolver(this.props.auth, this.props.ttl) : <a title={ this.props.auth.email } className='dropdown-toggle'>{ this.props.auth.name } ({this.renderTtl(this.props.ttl)})</a> }
                                 </li>
                                 : null
                             }
@@ -223,20 +223,30 @@ class WorkArea extends React.Component {
                 <div className='pull-right hidden-xs'>
                     <b>Version</b> {this.version}
                 </div>
-                Admin.mobility
+                { this.props.footerText }
             </footer>
+            { this.props.sideBarResolver
+                ? <aside className="control-sidebar control-sidebar-dark control-sidebar-open">{ this.props.sideBarResolver() }</aside>
+                : null
+            }
         </div>
     }
 }
 
 WorkArea.propTypes = {
+    statusBarResolver: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
     show: PropTypes.bool,
     menu: PropTypes.array,
+    footerText: PropTypes.string,
+    sideBarResolver: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
 };
 
 WorkArea.defaultProps = {
+    statusBarResolver: false,
     show: false,
-    menu: []
+    menu: [],
+    footerText: '',
+    sideBarResolver: false,
 };
 
 const mapStateToProps = (state) => {

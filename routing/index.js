@@ -153,38 +153,39 @@ class Routing extends React.Component {
         return <SnackbarProvider maxSnack={3} anchorOrigin={{vertical: 'bottom', horizontal: 'right'}} autoHideDuration={2500}>
             <ThemeProvider theme={theme}>
                 <div id={'app__layout'}>
-                    <WorkArea show={!!this.props.auth} menu={this.props.menu}>
-                    { !_.isNull(this.props.auth)
-                        ? <Router history={this.history}>
-                            <Switch>
-                                { this.props.privateRoutes.map(privateRoute => {
-                                    return <PrivateRoute
-                                        exact={privateRoute.exact}
-                                        path={privateRoute.path}
-                                        component={(props) => {
-                                            return privateRoute.component(props);
+                    <WorkArea footerText={this.props.footerText} statusBarResolver={this.props.statusBarResolver} sideBarResolver={this.props.sideBarResolver} show={!!this.props.auth} menu={this.props.menu}>
+                        { !_.isNull(this.props.auth)
+                            ? <Router history={this.history}>
+                                <Switch>
+                                    { this.props.privateRoutes.map(privateRoute => {
+                                        return <PrivateRoute
+                                            key={privateRoute.path}
+                                            exact={privateRoute.exact}
+                                            path={privateRoute.path}
+                                            component={(props) => {
+                                                return privateRoute.component(props);
+                                            }}
+                                        />
+                                    }) }
+                                    <PrivateRoute
+                                        path={pageRouter.auth.exit}
+                                        component={() => {
+                                            return <AuthExitPage />
                                         }}
                                     />
-                                }) }
-                                <PrivateRoute
-                                    path={pageRouter.auth.exit}
-                                    component={() => {
-                                        return <AuthExitPage />
-                                    }}
-                                />
-                                <PublicRoute
-                                    path={pageRouter.auth.auth}
-                                    component={() => {
-                                        return <AuthEmailPage />
-                                    }}
-                                />
-                                <PrivateRoute component={() => {
-                                    return <NotFoundPage />
-                                }} />
-                            </Switch>
-                        </Router>
-                        : <LoadingPage />
-                    }
+                                    <PublicRoute
+                                        path={pageRouter.auth.auth}
+                                        component={() => {
+                                            return <AuthEmailPage />
+                                        }}
+                                    />
+                                    <PrivateRoute component={() => {
+                                        return <NotFoundPage />
+                                    }} />
+                                </Switch>
+                            </Router>
+                            : <LoadingPage />
+                        }
                     </WorkArea>
                 </div>
             </ThemeProvider>
@@ -193,13 +194,19 @@ class Routing extends React.Component {
 }
 
 Routing.propTypes = {
+    statusBarResolver: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
     menu: PropTypes.array,
     privateRoutes: PropTypes.array,
+    footerText: PropTypes.string,
+    sideBarResolver: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
 };
 
 Routing.defaultProps = {
+    statusBarResolver: false,
     menu: [],
     privateRoutes: [],
+    footerText: '',
+    sideBarResolver: false,
 };
 
 export default (connect(mapStateToProps, mapDispatchToProps)(Routing))
