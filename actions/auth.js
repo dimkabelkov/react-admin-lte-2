@@ -9,11 +9,11 @@ export function authTtl() {
 }
 
 export function authCheckAction() {
-    return fetching('AUTH_CHECK', apiRoutes.auth.check);
+    return fetching('AUTH_CHECK', apiRoutes.auth.check.replace(':api-ns', window.apiNs));
 }
 
 export function authEmailAction(email, password) {
-    return fetching('AUTH_EMAIL', apiRoutes.auth.email, {
+    return fetching('AUTH_EMAIL', apiRoutes.auth.email.replace(':api-ns', window.apiNs), {
         form: {
             email,
             password,
@@ -22,5 +22,5 @@ export function authEmailAction(email, password) {
 }
 
 export function authExitAction() {
-    return fetching('AUTH_EXIT', apiRoutes.auth.exit);
+    return fetching('AUTH_EXIT', apiRoutes.auth.exit.replace(':api-ns', window.apiNs));
 }
